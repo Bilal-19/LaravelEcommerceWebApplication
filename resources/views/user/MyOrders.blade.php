@@ -19,7 +19,7 @@
                         <tr>
                             <td>{{ $userOrder->product->title }}</td>
                             <td>{{ $userOrder->receiving_address }}</td>
-                            <td>{{ $userOrder->product->price }}</td>
+                            <td>${{ $userOrder->product->price }}</td>
                             <td>{{ $userOrder->status }}</td>
                             <td>{{ date_format($userOrder->created_at, 'd-m-Y') }}</td>
                             <td>{{ date_format($userOrder->created_at, 'h:i:s') }}</td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,7 @@ class UserController extends Controller
     }
     public function index()
     {
-        $products = Product::all();
+        $products = Product::limit(4)->get();
         $count = $this->getCartCount();
         return view("user.index")->with(compact('products', 'count'));
     }
@@ -145,5 +146,44 @@ class UserController extends Controller
             return view('user.MyOrders', compact('findUserOrders'));
         }
         return redirect()->route('logout.home');
+    }
+
+    public function shop(Request $request)
+    {
+        $search = $request->search ?? "";
+        if ($search) {
+            $products = Product::
+                where('title', 'LIKE', $search)
+                ->orWhere('category', 'LIKE', $search)
+                ->get();
+            $count = $this->getCartCount();
+            return view("user.Shop", compact('products', 'count'));
+        } else {
+            $products = Product::all();
+            $count = $this->getCartCount();
+            return view("user.Shop", compact('products', 'count'));
+        }
+    }
+
+    public function myProfile()
+    {
+        return view('user.MyProfile');
+    }
+
+    public function updateProfileInformation(Request $request)
+    {
+        $findUser = User::find(Auth::id());
+        $findUser->name = $request['name'];
+        $findUser->email = $request['email'];
+        $findUser->phone = $request['phone'];
+        $findUser->address = $request['address'];
+        $result = $findUser->save();
+        if ($result) {
+            toastr()
+                ->timeOut(5000)
+                ->closeButton()
+                ->addSuccess('Profile Updated Successfully');
+            return redirect()->back();
+        }
     }
 }

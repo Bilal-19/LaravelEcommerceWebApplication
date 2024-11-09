@@ -3,14 +3,21 @@
 
 @section('main-section')
     <div class="container-fluid">
-        <div class="row" id="hero-section"></div>
         <div class="row mt-3">
             @isset(Auth::user()->name)
                 <h4 class="text-dark">Welcome {{ Auth::user()->name }}</h4>
             @endisset
         </div>
         <div class="row mt-3 text-center">
-            <h2>Featured Products</h2>
+            <h2>All Products</h2>
+        </div>
+        <div class="row">
+            <form action="{{route('view.shop')}}" method="get">
+                <div class="input-group">
+                    <input type="search" name="search" class="form-control" placeholder="Search product by name, categories">
+                    <button class="btn">Search</button>
+                </div>
+            </form>
         </div>
         <div class="row">
             @foreach ($products as $product)

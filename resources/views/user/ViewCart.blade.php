@@ -87,7 +87,6 @@
                     <input type="submit" value="Cash On Delivery" class="btn btn-primary mt-5">
                     <a href="{{ url('stripe', $totalSum) }}" class="btn btn-success mt-5"><i
                             class="fa-brands fa-cc-stripe mx-1"></i> Stripe Payment</a>
-                    <a href="" class="btn btn-success mt-5"><i class="fa-brands fa-cc-paypal mx-1"></i>PayPal Payment</a>
                 </form>
 
             </div>

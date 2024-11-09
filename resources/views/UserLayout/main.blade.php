@@ -2,7 +2,7 @@
 
 @yield('main-section')
 
-<div class="container-fluid brand-bg-color">
+<div class="container-fluid brand-bg-color footer mt-5 shadow">
     <div class="row mt-5">
         <div class="col-md-1 mt-5"></div>
         <div class="col-md-3 mt-5">

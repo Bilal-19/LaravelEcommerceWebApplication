@@ -107,3 +107,12 @@ Route::controller(HomeController::class)->group(function(){
     Route::post('stripe/{value}', 'stripePost')->name('stripe.post');
 
 });
+
+// Route to View Shop Page
+Route::get("/view/shop", [UserController::class, 'shop'])->name('view.shop');
+
+
+Route::get("/view/profile", [UserController::class, 'myProfile'])->name('view.profile');
+
+// Route for updating profile information
+Route::post("/update/profile", [UserController::class, 'updateProfileInformation'])->name('update.profile');
