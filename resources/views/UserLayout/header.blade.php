@@ -92,14 +92,6 @@
             color: #FF5722;
         }
 
-        .header {
-            border-bottom: 1px solid #777777;
-        }
-
-        .footer {
-            border-top: 1px solid #777777;
-        }
-
         /* Home Page */
         #hero-section {
             background-image: url('https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/ecommerce%20marketing.jpg?width=595&height=400&name=ecommerce%20marketing.jpg');
@@ -121,11 +113,11 @@
 
 <body>
 
-    <div class="container-fluid shadow header">
+    <div class="container-fluid shadow">
         <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light brand-bg-color">
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark text-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="{{ route('Home') }}">
+                    <a class="navbar-brand text-light" href="{{ route('Home') }}">
                         <img src="{{ asset('Logo/brand_logo.png') }}" alt="" height="40">
                         <span class=fw-bold">NEXT </span>BUY
                     </a>
@@ -137,13 +129,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mx-auto mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('view.shop') }}">Shop</a>
+                                <a class="nav-link text-light active" aria-current="page" href="{{ route('view.shop') }}">Shop</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
+                                <a class="nav-link text-light active" aria-current="page" href="{{route("contact-us")}}">Contact Us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="{{ route('view.cart') }}">
+                                <a class="nav-link text-light" aria-current="page" href="{{ route('view.cart') }}">
                                     <i class="fa fa-shopping-bag"></i>
                                     @isset($count)
                                         [{{ $count }}]
@@ -152,14 +144,14 @@
                             </li>
                             @if (Auth::check())
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page"
+                                    <a class="nav-link text-light active" aria-current="page"
                                         href="{{ route('my.orders', Auth::user()->id) }}">My Orders</a>
                                 </li>
                             @endif
 
                             @if (Auth::user())
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                                    <a class="nav-link text-light dropdown-toggle" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Welcome {{ Auth::user()->name }}
                                     </a>

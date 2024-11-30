@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\ContactUs;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -183,6 +184,41 @@ class UserController extends Controller
                 ->timeOut(5000)
                 ->closeButton()
                 ->addSuccess('Profile Updated Successfully');
+            return redirect()->back();
+        }
+    }
+
+    public function viewContactUs()
+    {
+        return view("user.Contact");
+    }
+
+    // Store 'Contact Us' form details to database table
+    public function storeContactUsData(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'useremail' => 'required',
+            'usermessage' => 'required',
+        ]);
+
+        $contact = new ContactUs();
+        $contact->username = $request->username;
+        $contact->useremail = $request->useremail;
+        $contact->usermessage = $request->usermessage;
+        $result = $contact->save();
+
+        if ($result) {
+            toastr()
+                ->timeOut(5000)
+                ->closeButton()
+                ->addSuccess('We have received your information. Our team will contact you soon.');
+            return redirect()->back();
+        } else {
+            toastr()
+                ->timeOut(5000)
+                ->closeButton()
+                ->addError('Something went wrong. Please try again later.');
             return redirect()->back();
         }
     }

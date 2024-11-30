@@ -116,3 +116,9 @@ Route::get("/view/profile", [UserController::class, 'myProfile'])->name('view.pr
 
 // Route for updating profile information
 Route::post("/update/profile", [UserController::class, 'updateProfileInformation'])->name('update.profile');
+
+// Route for viewing contact us page
+Route::get("/user/contact/us",[UserController::class, 'viewContactUs'])->name('contact-us');
+
+// Route for storing 'Contact Us' page information
+Route::post("/store/contact/us", [UserController::class, 'storeContactUsData'])->name('store.contactus.form');
