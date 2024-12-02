@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\ContactUs;
 use App\Models\Product;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -233,6 +234,11 @@ class AdminController extends Controller
         $findOrder = Order::find($id);
         $pdf = Pdf::loadView('admin.Invoice', compact('findOrder'));
         return $pdf->download('invoice.pdf');
+    }
+
+    public function customerInquiries(){
+        $allInquiries = ContactUs::all();
+        return view('admin.CustomerQueries')->with(compact('allInquiries'));
     }
 }
 

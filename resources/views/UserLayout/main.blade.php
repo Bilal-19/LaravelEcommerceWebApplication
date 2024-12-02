@@ -2,7 +2,7 @@
 
 @yield('main-section')
 
-<div class="container-fluid bg-dark text-light footer mt-5 pb-5 pt-3 shadow">
+<div class="container-fluid bg-dark text-light footer mt-5 pb-2 pt-3 shadow">
     <div class="row mt-5">
         <div class="col-md-4">
             <h5 class="text-center">QUICK LINKS</h5>
@@ -25,6 +25,10 @@
             <p class="mb-0"><i class="fa-solid fa-phone"></i> 03427634247</p>
             <p class="mb-0"><i class="fa-solid fa-envelope"></i> smartmart@pk.com</p>
         </div>
+    </div>
+
+    <div class="row">
+        <p class="text-center">Designed & Developed by <a href="https://bilal-19.github.io/portfolio/" class="text-decoration-none text-light" rel="nofollow">Bilal Muhammad Yousuf</a></p>
     </div>
 </div>
 @include('UserLayout.footer')

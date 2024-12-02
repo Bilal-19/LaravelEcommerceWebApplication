@@ -177,7 +177,7 @@
                                     </ul>
                                 </li>
                             @else
-                                <li class="nav-item">
+                                <li class="nav-item mx-5">
                                     <a class="nav-link btn brand-btn" aria-current="page" href="{{ route('login') }}">
                                         Login
                                     </a>

@@ -26,7 +26,8 @@ class UserController extends Controller
     {
         $products = Product::limit(4)->get();
         $count = $this->getCartCount();
-        return view("user.index")->with(compact('products', 'count'));
+        return view("user.index")->
+            with(compact('products', 'count'));
     }
 
     public function viewSpecificProduct($id)
@@ -68,9 +69,6 @@ class UserController extends Controller
         } else {
             return redirect('/login');
         }
-
-
-
     }
 
     public function viewCart()
@@ -105,15 +103,10 @@ class UserController extends Controller
             'receiver_address' => 'required',
             'receiver_phone' => 'required',
         ]);
-        print_r($request->all());
-
-
         // Get User ID of login user
         $loginUserID = Auth::user()->id;
-
         // Get Cart Information
         $carts = Cart::where('user_id', $loginUserID)->get();
-
         foreach ($carts as $cart) {
             $order = new Order();
             $order->name = $request->receiver_name;
@@ -123,14 +116,12 @@ class UserController extends Controller
             $order->product_id = $cart->product_id;
             $result = $order->save();
         }
-
         // Remove data from the cart after the order place successfully
         $cartRemove = Cart::where('user_id', $loginUserID)->get();
         foreach ($cartRemove as $val) {
             $findRecord = Cart::find($val->id);
             $findRecord->delete();
         }
-
         if ($result) {
             toastr()
                 ->timeOut(5000)

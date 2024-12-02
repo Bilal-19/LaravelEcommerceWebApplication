@@ -17,7 +17,7 @@
                 <a href="{{route('admin.home')}}"> <i class="icon-home"></i>Home </a>
             </li>
             <li>
-                <a href="{{route('view.category')}}"> <i class="icon-grid"></i>Category </a>
+                <a href="{{route('view.category')}}"> <i class="icon-layers"></i>Category </a>
             </li>
             <li>
                 <a href="{{route('view.orders')}}"> <i class="icon-grid"></i>Orders </a>
@@ -29,11 +29,11 @@
                 <ul id="exampledropdownDropdown" class="collapse list-unstyled">
                     <li><a href="{{route('add.product')}}">Add Products</a></li>
                     <li><a href="{{route('view.product')}}">View Products</a></li>
-                    <li><a href="#">Edit Products</a></li>
                     <li><a href="#">Deleted Products (Trash)</a></li>
                 </ul>
             </li>
-            <li><a href="login.html"> <i class="icon-logout"></i>Login page </a></li>
+            <li><a href="{{route("Customer.Inquiries")}}"> <i class="icon-light-bulb"></i>Client Inquiries</a></li>
+            <li><a href="#"> <i class="icon-logout"></i>Registered Users </a></li>
         </ul>
 
     </nav>

@@ -122,3 +122,6 @@ Route::get("/user/contact/us",[UserController::class, 'viewContactUs'])->name('c
 
 // Route for storing 'Contact Us' page information
 Route::post("/store/contact/us", [UserController::class, 'storeContactUsData'])->name('store.contactus.form');
+
+// Route for viewing customer inquiries page as an Admin
+Route::get("/customer/queries/",[AdminController::class, 'customerInquiries'])->name('Customer.Inquiries');
