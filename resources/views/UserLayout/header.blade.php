@@ -95,7 +95,7 @@
         /* Home Page */
         #hero-section {
             background-image: url('https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/ecommerce%20marketing.jpg?width=595&height=400&name=ecommerce%20marketing.jpg');
-            height: 400px;
+            height: 350px;
         }
 
         /* Products */

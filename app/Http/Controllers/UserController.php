@@ -15,6 +15,7 @@ class UserController extends Controller
     public function getCartCount()
     {
         if (Auth::user()) {
+            // 'user_id' equals to the user which is currently logged in.
             $count = Cart::all()->where('user_id', Auth::user()->id)->count();
             return $count;
         } else {
@@ -24,8 +25,11 @@ class UserController extends Controller
     }
     public function index()
     {
+        // Fetch first four products from the table
         $products = Product::limit(4)->get();
         $count = $this->getCartCount();
+
+        // We pass the count value because it is a part of 'header.blade.php' file
         return view("user.index")->
             with(compact('products', 'count'));
     }
@@ -34,7 +38,8 @@ class UserController extends Controller
     {
         $findProduct = Product::find($id);
         $count = $this->getCartCount();
-        return view("user.DetailedProduct")->with(compact('findProduct', 'count'));
+        $similarProducts = Product::where('category','LIKE',$findProduct->category)->get();
+        return view("user.DetailedProduct")->with(compact('findProduct', 'count', 'similarProducts'));
     }
 
     public function addToCart($id)

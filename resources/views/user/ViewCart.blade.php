@@ -41,7 +41,7 @@
                             </td>
                         </tr>
                         <?php
-                        $totalSum = $totalSum + $listCart->product->price;
+                        $totalSum = $totalSum + $listCart->product->price * $listCart->product_quantity;
                         ?>
                     @endforeach
                 </table>

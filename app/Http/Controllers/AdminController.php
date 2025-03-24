@@ -26,23 +26,36 @@ class AdminController extends Controller
             'category' => 'required'
         ]);
 
-        $category = new Category();
-        $category->category_name = $request->category;
-        $result = $category->save();
+        // Check if the provided value of 'category' already exist
+        $isCategoryAlreadyExist = Category::where('category_name', $request->category)->count();
 
-        // Show notification to the user for 5 seconds
-        if ($result) {
+        if ($isCategoryAlreadyExist > 0) {
             toastr()
                 ->timeOut(5000)
                 ->closeButton()
-                ->addSuccess('New Category Added Successfully');
-            return redirect('/admin/dashboard/category');
+                ->addWarning('The provided category is already exist in our database');
+                return redirect()->back();
         } else {
-            toastr()
-                ->timeOut(5000)
-                ->closeButton()
-                ->addWarning('Failed to add new category');
+
+            $category = new Category();
+            $category->category_name = $request->category;
+            $result = $category->save();
+
+            // Show notification to the user for 5 seconds
+            if ($result) {
+                toastr()
+                    ->timeOut(5000)
+                    ->closeButton()
+                    ->addSuccess('New Category Added Successfully');
+                return redirect('/admin/dashboard/category');
+            } else {
+                toastr()
+                    ->timeOut(5000)
+                    ->closeButton()
+                    ->addWarning('Failed to add new category');
+            }
         }
+
     }
 
     public function deleteCategory($id)
@@ -53,7 +66,7 @@ class AdminController extends Controller
             toastr()
                 ->timeOut(5000)
                 ->closeButton()
-                ->addInfo('Data deleted successfully');
+                ->addSuccess('Category deleted successfully');
         }
         return redirect()->back();
     }
@@ -236,7 +249,8 @@ class AdminController extends Controller
         return $pdf->download('invoice.pdf');
     }
 
-    public function customerInquiries(){
+    public function customerInquiries()
+    {
         $allInquiries = ContactUs::all();
         return view('admin.CustomerQueries')->with(compact('allInquiries'));
     }

@@ -6,7 +6,7 @@
         <div class="row" id="hero-section"></div>
         <div class="row mt-3">
             @isset(Auth::user()->name)
-                <h4 class="text-dark">Welcome {{ Auth::user()->name }}</h4>
+                <h4>Welcome Back, <br> {{ Auth::user()->name }}</h4>
             @endisset
         </div>
         <div class="row mt-3 text-center">
@@ -24,7 +24,7 @@
                             </div>
                             <p class="card-text mb-0 product-description">{{ $product->description }}</p>
                             <div class="d-flex justify-content-between">
-                                <p class="card-text product-price"><i class="fa-solid fa-tag"></i> ${{ $product->price }}
+                                <p class="card-text product-price"><i class="fa-solid fa-tag"></i>${{ $product->price }}
                                 </p>
                                 <p class="card-text">Quantity: {{ $product->quantity }}</p>
                             </div>
@@ -38,6 +38,14 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3 text-end">
+                <a class="text-end btn btn-outline-dark btn-sm" href="{{route('view.shop')}}" target="_blank">View More</a>
+            </div>
         </div>
     </div>
 @endsection

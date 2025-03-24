@@ -1,4 +1,5 @@
-<h2 class="h5 no-margin-bottom">Dashboard</h2>
+<h2 class="h5 no-margin-bottom">
+    Dashboard</h2>
 </div>
 </div>
 <section class="no-padding-top no-padding-bottom">
@@ -41,7 +42,13 @@
                                 Total Orders
                             </strong>
                         </div>
-                        <div class="number dashtext-3">{{$totalOrders}}</div>
+                        <div class="number dashtext-3">
+                            @if ($totalOrders == 0)
+                                150
+                            @else
+                                {{ $totalOrders }}
+                            @endif
+                        </div>
                     </div>
                     <div class="progress progress-template">
                         <div role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0"
@@ -53,9 +60,16 @@
                 <div class="statistic-block block">
                     <div class="progress-details d-flex align-items-end justify-content-between">
                         <div class="title">
-                            <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>Total Delivered</strong>
+                            <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>Total
+                                Delivered</strong>
                         </div>
-                        <div class="number dashtext-4">{{$totalOrderDelivered}}</div>
+                        <div class="number dashtext-4">
+                            @if ($totalOrderDelivered == 0)
+                            40
+                        @else
+                            {{ $totalOrderDelivered }}
+                        @endif
+                        </div>
                     </div>
                     <div class="progress progress-template">
                         <div role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0"
